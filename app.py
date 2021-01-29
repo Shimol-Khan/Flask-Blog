@@ -1,13 +1,27 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
+posts = [
+    {
+        "author": "Shimol Khan",
+        "title": "What is Lorem Ipsum?",
+        "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+    {
+        "author": "Shimol Khan",
+        "title": "What is Lorem Ipsum?",
+        "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    }
+]
+
 @app.route("/")
-def hello():
-    return "<h1>Hello World</h1>"
+@app.route("/home")
+def home():
+    return render_template('home.html', posts = posts, title = "Posts")
 
 @app.route("/about")
 def about():
-    return "<h1>About Page</h1>"
+    return render_template('about.html', title = "About")
 
 
 if __name__ == '__main__':
