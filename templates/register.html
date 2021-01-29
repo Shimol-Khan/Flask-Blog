@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row justify-content-center" style="margin-top: 18vh;">
+        <div class="col-lg-6">
+            <div class="card p-3">
+                <div class="card-body">
+                    <h5 class="card-title py-3">Register Today!</h5>
+                    <form method="POST">
+                        <div class="form-outline mb-2">
+                            {{ form.name(class="form-control") }}
+                            {{ form.name.label(class="form-label") }}
+                        </div>
+                        {% if form.name.errors %}
+                            {% for e in form.email.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-outline mb-2">
+                            {{ form.email(class="form-control") }}
+                            {{ form.email.label(class="form-label") }}
+                        </div>
+                        {% if form.email.errors %}
+                            {% for e in form.email.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-outline mb-2">
+                            {{ form.contact_number(class="form-control") }}
+                            {{ form.contact_number.label(class="form-label") }}
+                        </div>
+                        {% if form.contact_number.errors %}
+                            {% for e in form.contact_number.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-outline mb-2">
+                            {{ form.address(class="form-control") }}
+                            {{ form.address.label(class="form-label") }}
+                        </div>
+                        {% if form.address.errors %}
+                            {% for e in form.address.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-outline mb-2">
+                            {{ form.password(class="form-control") }}
+                            {{ form.password.label(class="form-label") }}
+                        </div>
+                        {% if form.password.errors %}
+                            {% for e in form.password.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-outline mb-2">
+                            {{ form.confirm_password(class="form-control") }}
+                            {{ form.confirm_password.label(class="form-label") }}
+                        </div>
+                        {% if form.confirm_password.errors %}
+                            {% for e in form.confirm_password.errors %}
+                                <span class="text-muted d-block mb-2">{{ e }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        {{ form.submit(class="btn btn-outline-primary")}}
+                    </form>
+                    <small class="text-muted d-block mt-3">Already have account? <a href="{{ url_for('login') }}">Sign in </a></small>
+                    <small class="text-muted d-block">Forgot Password? </small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
