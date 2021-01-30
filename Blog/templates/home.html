@@ -3,7 +3,6 @@
 {% block content %}
     <h1>All Posts</h1>
     {% for post in posts %}
-        <p>{{ post.author }}</p>
         <p>{{ post.title }}</p>
         <p>{{ post.body }}</p>
     {% endfor %}
