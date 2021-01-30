@@ -1,8 +1,6 @@
 from flask_wtf import FlaskForm
-from flask_wtf.recaptcha import validators
-from wtforms.fields.core import BooleanField, StringField
-from wtforms.fields.simple import PasswordField, SubmitField
-from wtforms.validators import DataRequired, EqualTo, Length, email
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, email, EqualTo
 
 class RegistrationForm(FlaskForm):
     name = StringField('Name', validators=[
