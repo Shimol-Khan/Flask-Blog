@@ -1,11 +1,10 @@
-  
 import os
 import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from Blog import app, db, bcrypt
-from Blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from Blog.models import User, Post
+from Blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ContactForm
+from Blog.models import Contact, User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -154,3 +153,16 @@ def user_posts(username):
         .order_by(Post.date_posted.desc())\
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
+
+
+@app.route("/contact/new", methods=['GET', 'POST'])
+def new_contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        contact = Contact(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, message=form.message.data)
+        db.session.add(contact)
+        db.session.commit()
+        flash('Your message has been sent!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_contact.html', title='New Contact Form',
+                           form=form, legend='New Contact')
