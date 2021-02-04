@@ -31,7 +31,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
+        flash('Your account has been created!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -101,7 +101,7 @@ def browse():
         posts = Post.query.filter(Post.title.contains(q) | Post.content.contains(q))
     else:
         posts = Post.query.all()
-    return render_template('browse.html', posts=posts)
+    return render_template('browse.html', posts=posts, title="Browse All Posts")
 
 
 @app.route("/post/new", methods=['GET', 'POST'])
@@ -175,5 +175,5 @@ def new_contact():
         db.session.commit()
         flash('Your message has been sent!', 'success')
         return redirect(url_for('home'))
-    return render_template('create_contact.html', title='New Contact Form',
+    return render_template('create_contact.html', title='Contact',
                            form=form, legend='New Contact')

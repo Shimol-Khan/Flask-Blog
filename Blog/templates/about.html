@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font animate__animated animate__fadeIn">
   <div class="container px-5 py-24 mx-auto">
     <div class="text-center mb-5">
-      <img src="static/profile_pics/me.png" class="inline rounded-full h-20 w-20">
-      <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-2 mt-4">Shimol Khan</h1>
-      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Software Engineering Student At, UPSI</p>
+      <img src="static/profile_pics/me.png" class="inline rounded-full h-20 w-20 shadow-lg">
+      <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-2 mt-4">Hello I'm
+        <span class="animate text-green-500"></span>
+      </h1>
+      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mb-2">Software Engineering Student At, UPSI</p>
       <p class="text-sm text-gray-500 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">I'm Full-Stack JavaScript, Python & Ruby Developer with React.js, Flask, Django, Rails, MySQL, PostgreSQL, NoSQL, Heroku, Docker, & Material Design expertised.</p>
       <hr class="my-2">
       <small class="text-gray-400">WebProgramming Site Engineered By - Shimol Khan</small>
@@ -16,4 +18,15 @@
     </button>
   </div>
 </section>
+<script>
+  var typed = new Typed('.animate',{
+    strings: [
+      "Shimol",
+      "Khan"
+    ],
+    typeSpeed: 80,
+    backSpeed: 80,
+    loop: true
+  })
+</script>
 {% endblock content %}

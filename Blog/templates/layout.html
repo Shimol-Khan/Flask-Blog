@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   {% if title %}
-  <title>Blog | {{ title }}</title>
+  <title>WebProgramming-Blog | {{ title }}</title>
   {% else %}
-  <title>Blog | Home</title>
+  <title>WebProgramming-Blog | Home</title>
   {% endif %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +12,8 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
 </head>
-
 <body>
 <!---------------------- Main Navigation ----------------->
   <header class="text-gray-600 bg-gray-200 body-font shadow">
@@ -31,7 +30,7 @@
         <a class="mr-5 hover:text-gray-900" href="{{ url_for('home') }}">Home</a>
         <a class="mr-5 hover:text-gray-900" href="{{ url_for('browse') }}">Browse All Posts</a>
         <a class="mr-5 hover:text-gray-900" href="{{ url_for('about') }}">About</a>
-        <a class="mr-5 hover:text-gray-900" href="{{ url_for('new_contact') }}">Contact</a>
+        <a class="mr-5 hover:text-gray-900" target="_blank" href="{{ url_for('new_contact') }}">Contact</a>
       </nav>
       {% if current_user.is_authenticated %}
       <a class="mr-5 hover:text-gray-900" href="{{ url_for('account') }}">Account</a>
