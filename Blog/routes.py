@@ -92,6 +92,16 @@ def account():
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form)
 
+# Browse Post / Search Post
+@app.route("/browse")
+def browse():
+    q = request.args.get('q')
+    if q:
+        posts = Post.query.filter(Post.title.contains(q) | Post.content.contains(q))
+    else:
+        posts = Post.query.all()
+    return render_template('browse.html', posts=posts)
+
 
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
