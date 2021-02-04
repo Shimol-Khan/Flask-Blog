@@ -25,6 +25,9 @@
 
     python run.py
 
+5) The project codebase has been hosted to GitHub:
+    https://github.com/Shimol-Khan/Flask-Blog
+
 ==================================================
 For more information:
 Shimol Khan
