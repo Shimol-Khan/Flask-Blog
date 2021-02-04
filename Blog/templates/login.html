@@ -1,55 +1,79 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="row justify-content-center animate__animated animate__bounceInDown" style="margin-top: 20vh;">
-        <div class="col-lg-7">
-            <div class="card p-2">
-                <div class="card-body">
-                    <form method="POST" action="">
-                        {{ form.hidden_tag() }}
-                        <fieldset class="form-group">
-                            <legend class="border-bottom mb-4">Log In</legend>
-                            <div class="form-group py-1">
-                                {{ form.email.label(class="form-control-label") }}
-                                {% if form.email.errors %}
-                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.email.errors %}
-                                            <span>{{ error }}</span>
-                                        {% endfor %}
-                                    </div>
-                                {% else %}
-                                    {{ form.email(class="form-control form-control-lg") }}
-                                {% endif %}
-                            </div>
-                            <div class="form-group py-1">
-                                {{ form.password.label(class="form-control-label") }}
-                                {% if form.password.errors %}
-                                    {{ form.password(class="form-control form-control-lg is-invalid") }}
-                                    <div class="invalid-feedback">
-                                        {% for error in form.password.errors %}
-                                            <span>{{ error }}</span>
-                                        {% endfor %}
-                                    </div>
-                                {% else %}
-                                    {{ form.password(class="form-control form-control-lg") }}
-                                {% endif %}
-                            </div>
-                            <div class="form-check py-1">
-                                {{ form.remember(class="form-check-input") }}
-                                {{ form.remember.label(class="form-check-label") }}
-                            </div>
-                        </fieldset>
-                        <div class="form-group">
-                            {{ form.submit(class="btn btn-outline-info") }}
-                        </div>
-                    </form>
-                    <div class="pt-3">
-                        <small class="text-muted">
-                            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
-                        </small>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if title %}
+  <title>Blog | {{ title }}</title>
+  {% else %}
+  <title>Blog | Home</title>
+  {% endif %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div>
+        <svg class="mx-auto h-12 w-auto" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+          Sign in
+        </h2>
+      </div>
+      <form class="mt-8 space-y-6" action="#" method="POST">
+        {{ form.hidden_tag() }}
+        <input type="hidden" name="remember" value="true">
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            {% if form.email.errors %}
+              {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+            <div class="invalid-feedback">
+              {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
             </div>
+            {% else %}
+              {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+              placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500
+              focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+            {% endif %}
+          </div>
+          <div>
+            {% if form.password.errors %}
+                {{ form.password(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+            {% endif %}
+          </div>
         </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            {{ form.remember(class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded") }}
+            {{ form.remember.label(class="ml-2 block text-sm text-gray-900") }}
+          </div>
+
+          <div class="text-sm">
+            <a href="{{ url_for('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+            Need an account?
+            </a>
+          </div>
+        </div>
+
+        <div>
+          {{ form.submit(class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500") }}
+        </div>
+      </form>
     </div>
-{% endblock content %}
+  </div>
+</body>
+
+</html>
