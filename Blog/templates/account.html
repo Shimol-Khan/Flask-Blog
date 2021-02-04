@@ -1,15 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
+<!------------------------- Account Page ------------------------>
 <div class="flex flex-col items-center" style="margin-top: 12vh;">
   <div class="bg-gray-100 p-10 w-2/5 shadow-lg">
     <div class="text-center">
       <img class="rounded-full inline w-20 h-20" src="{{ image_file }}">
       <div class="media-body">
+        <!------------------ Account Information ---------------->
         <h1 class="text-3xl py-4">{{ current_user.username }}</h1>
         <p class="text-gray-600">{{ current_user.email }}</p>
+        <!-----------------/ Account Information ---------------->
         <hr class="my-3">
       </div>
     </div>
+
+    <!------------------- Account Update Form ----------------->
     <form method="POST" action="" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
       <fieldset class="form-group">
@@ -54,6 +59,8 @@
         {{ form.submit(class="flex mx-auto text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-green-600 rounded text-base shadow-lg") }}
       </div>
     </form>
+    <!------------------/ Account Update Form ----------------->
   </div>
 </div>
+<!------------------------/ Account Page ------------------------>
 {% endblock content %}

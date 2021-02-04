@@ -7,20 +7,21 @@ from Blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm,
 from Blog.models import Contact, User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
-
+# URL Mapping -> localhost:500
 @app.route("/")
+# URL Mapping -> localhost:500/home
 @app.route("/home")
 def home():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=3)
     return render_template('home.html', posts=posts)
 
-
+# URL Mapping -> localhost:500/about
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
 
-
+# URL Mapping -> localhost:500/register
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -35,7 +36,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
+# URL Mapping -> localhost:500/login
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -51,7 +52,7 @@ def login():
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
-
+# URL Mapping -> localhost:500/logout
 @app.route("/logout")
 def logout():
     logout_user()
@@ -71,7 +72,7 @@ def save_picture(form_picture):
 
     return picture_fn
 
-
+# URL Mapping -> localhost:500/account
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
@@ -93,7 +94,7 @@ def account():
                            image_file=image_file, form=form)
 
 
-# Browse Post / Search Post
+# URL Mapping -> localhost:500/browse
 @app.route("/browse")
 def browse():
     q = request.args.get('q')
@@ -103,7 +104,7 @@ def browse():
         posts = Post.query.all()
     return render_template('browse.html', posts=posts, title="Browse All Posts")
 
-
+# URL Mapping -> localhost:500/post/new
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
@@ -117,13 +118,13 @@ def new_post():
     return render_template('create_post.html', title='New Post',
                            form=form, legend='Create New Post')
 
-
+# URL Mapping -> localhost:500/post/new/post_id
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
 
-
+# URL Mapping -> localhost:500/post/new/post_id/update
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
@@ -143,7 +144,7 @@ def update_post(post_id):
     return render_template('create_post.html', title='Update Post',
                            form=form, legend='Update Post')
 
-
+# URL Mapping -> localhost:500/post/new/post_id/delete
 @app.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):
@@ -155,7 +156,7 @@ def delete_post(post_id):
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
 
-
+# URL Mapping -> localhost:500/user/username
 @app.route("/user/<string:username>")
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
@@ -165,7 +166,7 @@ def user_posts(username):
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
 
-
+# URL Mapping -> localhost:500/contact/new
 @app.route("/contact/new", methods=['GET', 'POST'])
 def new_contact():
     form = ContactForm()

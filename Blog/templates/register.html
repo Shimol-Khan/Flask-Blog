@@ -23,45 +23,45 @@
           Join Today
         </h2>
       </div>
+      <!-------------------- Registration Form -------------------->
       <form class="mt-8 space-y-6" action="#" method="POST">
         {{ form.hidden_tag() }}
         <input type="hidden" name="remember" value="true">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             {% if form.username.errors %}
-                {{ form.username(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+              {{ form.username(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
                 <div class="invalid-feedback">
                     {% for error in form.username.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                 </div>
             {% else %}
-                {{ form.username(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+              {{ form.username(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
                 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500
                 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
             {% endif %}
           </div>
-
           <div>
             {% if form.email.errors %}
-                {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+              {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
                 <div class="invalid-feedback">
                     {% for error in form.email.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                 </div>
             {% else %}
-                {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+              {{ form.email(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
             {% endif %}
           </div>
           <div>
             {% if form.password.errors %}
-                {{ form.password(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
-                <div class="invalid-feedback">
-                    {% for error in form.password.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
+              {{ form.password(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
             {% else %}
                 {{ form.password(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
                 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500
@@ -83,7 +83,6 @@
             {% endif %}
           </div>
         </div>
-
         <div class="flex items-center justify-center">
           <div class="flex items-center">
             <a href="{{ url_for('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
@@ -95,6 +94,7 @@
           {{ form.submit(class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500") }}
         </div>
       </form>
+      <!-------------------/ Registration Form -------------------->
     </div>
   </div>
 </body>

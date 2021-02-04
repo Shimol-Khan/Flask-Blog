@@ -1,0 +1,33 @@
+1) I have used several CDN which needs internet connection to load the app completely.
+
+2) secret key is 87809ede0894f81ebf0d1ff694670266, if it doesn't work then generate a new secret key and paste in .env file
+    To generate a secret key -
+    1 -> open python shell or IDLE
+    2 -> Run: import secrets
+    3 -> Run: secrets.token_hex(16)
+    4 -> Copy the generated secret key
+
+3) Modules need to install to run this project. Open Terminal and run these command one by one:
+    pip install python-dotenv
+    pip install flask
+    pip install Flask-SQLAlchemy
+    pip install Flask-Bcrypt
+    pip install Flask-Login
+    pip install Flask-WTF
+    pip install wtforms-validators
+    pip install Pillow==2.2.2
+
+4) run.py is the main file. To run this project open the Terminal and run -
+
+    flask run
+
+    or
+
+    python run.py
+
+==================================================
+For more information:
+Shimol Khan
+Contact: +601116753634
+Email: shimolkhan.dev@gmail.com
+GitHub: https://github.com/Shimol-Khan
