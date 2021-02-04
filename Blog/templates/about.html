@@ -1,17 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <div class="row justify-content-center animate__animated animate__fadeIn" style="margin-top: 25vh;">
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="/static/profile_pics/me.jpg" alt="Image" height="120" width="120" class="rounded-circle">
-                        <h4 class="py-3">Shimol Khan</h4>
-                        <p class="lead">Software Engineering Student, Universiti Pendidikan Sultan Idris (UPSI)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="text-center mb-5">
+      <img src="static/profile_pics/me.png" class="inline rounded-full h-20 w-20">
+      <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-2 mt-4">Shimol Khan</h1>
+      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Software Engineering Student At, UPSI</p>
+      <p class="text-sm text-gray-500 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">I'm Full-Stack JavaScript, Python & Ruby Developer with React.js, Flask, Django, Rails, MySQL, PostgreSQL, NoSQL, Heroku, Docker, & Material Design expertised.</p>
+      <hr class="my-2">
+      <small class="text-gray-400">WebProgramming Site Engineered By - Shimol Khan</small>
     </div>
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+      <a href="/">Back</a>
+    </button>
+  </div>
+</section>
 {% endblock content %}
