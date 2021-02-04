@@ -1,57 +1,69 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="row justify-content-center" style="margin-top: 18vh;">
-    <div class="col-lg-10">
-        <div class="card p-3">
-            <div class="card-body">
-                <form method="POST" action="">
-                    {{ form.hidden_tag() }}
-                    <fieldset class="form-group">
-                        <legend class="mb-4">{{ legend }}</legend>
-                        <div class="form-group">
-                            {% if form.title.errors %}
-                            {{ form.title(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.title.errors %}
-                                <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            {{ form.title(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                        <div class="form-group mt-2">
-                            {% if form.category.errors %}
-                            {{ form.category(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.category.errors %}
-                                <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            {{ form.category(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                        <div class="form-group mt-2">
-                            {% if form.content.errors %}
-                            {{ form.content(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.content.errors %}
-                                <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
-                            {% else %}
-                            {{ form.content(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                    </fieldset>
-                    <div class="form-group mt-3">
-                        {{ form.submit(class="btn btn-outline-info") }}
-                        <a href="/" class="btn btn-outline-dark">Back</a>
-                    </div>
-                </form>
-            </div>
-        </div>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap">
+    <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+      <img class="object-cover object-center" src="/static/post.svg">
     </div>
-</div>
+    <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+      <div class="flex flex-col mb-10 lg:items-start items-center">
+        <div class="flex-grow">
+          <h2 class="text-gray-900 text-4xl title-font font-medium mb-3">Manage Your Post</h2>
+          <p class="leading-relaxed text-base mb-2">Let the world know what is happening inside YOU. Create a stunning post. </p>
+            <form method="POST">
+              {{ form.hidden_tag() }}
+              <div class="form-group mb-2">
+                {% if form.title.errors %}
+                <div class="invalid-feedback">
+                  {% for error in form.title.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+                placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500
+                focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+                {% endif %}
+              </div>
+              {% if form.category.errors %}
+              <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              <div class="relative">
+                {{ form.category(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+                placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500
+                focus:border-indigo-500 focus:z-10 sm:text-sm")}}
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+              </div>
+              {% endif %}
+              <div class="form-group mt-2">
+                {% if form.content.errors %}
+                <div class="invalid-feedback">
+                  {% for error in form.title.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300
+                placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500
+                focus:border-indigo-500 focus:z-10 sm:text-sm") }}
+                {% endif %}
+              </div>
+              <div class="mt-2">
+                {{ form.submit(class="inline-flex text-white bg-indigo-500 border-0 py-1 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg") }}
+                <button class="inline-flex text-white bg-gray-500 border-0 py-1 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg">
+                  <a href="/">Back</a>
+                </button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
