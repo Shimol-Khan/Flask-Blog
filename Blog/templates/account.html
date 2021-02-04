@@ -1,74 +1,59 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="row justify-content-center animate__animated animate__fadeInRight">
-    <div class="col-lg-10">
-        <div class="card p-2">
-            <div class="card-body">
-                <div class="media">
-                    <div class="text-center"><img class="rounded-circle account-img" height="120" width="120"
-                            src="{{ image_file }}"></div>
-                    <div class="media-body mt-4 text-center">
-                        <h2 class="account-heading">{{ current_user.username }}</h2>
-                        <p class="text-secondary">{{ current_user.email }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="flex flex-col items-center" style="margin-top: 12vh;">
+  <div class="bg-gray-100 p-10 w-2/5 shadow-lg">
+    <div class="text-center">
+      <img class="rounded-full inline w-20 h-20" src="{{ image_file }}">
+      <div class="media-body">
+        <h1 class="text-3xl py-4">{{ current_user.username }}</h1>
+        <p class="text-gray-600">{{ current_user.email }}</p>
+        <hr class="my-3">
+      </div>
     </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="py-1 text-gray-500">Account Info</legend>
+        <div class="form-group">
+          {{ form.username.label(class="leading-7 text-sm text-gray-600") }}
+            {% if form.username.errors %}
+              {{ form.username(class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out") }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.username(class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out") }}
+            {% endif %}
+        </div>
+        <div class="form-group mt-2">
+          {{ form.email.label(class="leading-7 text-sm text-gray-600") }}
+            {% if form.email.errors %}
+              {{ form.email(class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out") }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out") }}
+            {% endif %}
+        </div>
+        <div class="form-group mt-2">
+          {{ form.picture.label(class="leading-7 text-sm text-gray-600") }}
+          {{ form.picture(class="form-control-file") }}
+          {% if form.picture.errors %}
+          {% for error in form.picture.errors %}
+          <span class="text-danger">{{ error }}</span></br>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </fieldset>
+      <div class="form-group mt-5">
+        {{ form.submit(class="flex mx-auto text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-green-600 rounded text-base shadow-lg") }}
+      </div>
+    </form>
+  </div>
 </div>
-<br>
-    <div class="row justify-content-center animate__animated animate__fadeInLeft">
-        <div class="col-lg-10">
-            <div class="card p-2">
-                <div class="card-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        {{ form.hidden_tag() }}
-                        <fieldset class="form-group">
-                            <legend class="border-bottom mb-4">Update Account</legend>
-                            <div class="form-group py-2">
-                                {{ form.username.label(class="form-control-label") }}
-
-                                {% if form.username.errors %}
-                                {{ form.username(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.username.errors %}
-                                    <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                {% else %}
-                                {{ form.username(class="form-control form-control-lg") }}
-                                {% endif %}
-                            </div>
-                            <div class="form-group py-2">
-                                {{ form.email.label(class="form-control-label") }}
-                                {% if form.email.errors %}
-                                {{ form.email(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.email.errors %}
-                                    <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                {% else %}
-                                {{ form.email(class="form-control form-control-lg") }}
-                                {% endif %}
-                            </div>
-                            <div class="form-group py-2">
-                                {{ form.picture.label() }}
-                                {{ form.picture(class="form-control-file") }}
-                                {% if form.picture.errors %}
-                                {% for error in form.picture.errors %}
-                                <span class="text-danger">{{ error }}</span></br>
-                                {% endfor %}
-                                {% endif %}
-                            </div>
-                        </fieldset>
-                        <div class="form-group mt-2">
-                            {{ form.submit(class="btn btn-outline-info") }}
-                            <a href="/" class="btn btn-outline-dark">Back</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endblock content %}
+{% endblock content %}

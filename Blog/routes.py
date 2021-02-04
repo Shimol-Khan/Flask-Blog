@@ -92,6 +92,7 @@ def account():
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form)
 
+
 # Browse Post / Search Post
 @app.route("/browse")
 def browse():
