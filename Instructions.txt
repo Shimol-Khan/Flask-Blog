@@ -1,6 +1,6 @@
 1) I have used several CDN which needs internet connection to load the app completely.
 
-2) secret key is 87809ede0894f81ebf0d1ff694670266, if it doesn't work then generate a new secret key and paste in .env file
+2) Secret key is 87809ede0894f81ebf0d1ff694670266, if it doesn't work then generate a new secret key and paste in .env file
     To generate a secret key -
     1 -> open python shell or IDLE
     2 -> Run: import secrets
@@ -16,6 +16,13 @@
     pip install Flask-WTF
     pip install wtforms-validators
     pip install Pillow==2.2.2
+
+4) Need to activate the virtual environment. To activate it -
+    1 -> Go inside the Project Folder, where you will find run.py file.
+    2 -> Open command window by Pressing Shift and Right Click On Mouse at the same time.
+	A option will be appeared like "Open Powershell Window Here"
+    3 -> Type and run this this command to activate the virtual environment:
+	.\venv\Scripts\activate
 
 4) run.py is the main file. To run this project open the Terminal and run -
 
